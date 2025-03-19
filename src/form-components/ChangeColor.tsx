@@ -7,11 +7,12 @@ export function ChangeColor(): React.JSX.Element {
         "red",
         "blue",
         "green",
-        "yellow",
-        "purple",
         "orange",
+        "purple",
+        "cyan",
         "pink",
-        "teal",
+        "white",
+        "black",
     ];
 
     const [color, setColor] = useState<string>(colors[0]);
@@ -25,7 +26,9 @@ export function ChangeColor(): React.JSX.Element {
                         key={col}
                         type="radio"
                         name="colorOptions"
-                        label={col}
+                        label={
+                            <span style={{ backgroundColor: col }}>{col}</span>
+                        }
                         value={col}
                         checked={color === col}
                         onChange={(
@@ -34,7 +37,7 @@ export function ChangeColor(): React.JSX.Element {
                             setColor(event.target.value);
                         }}
                         inline
-                        style={{ color: col }}
+                        //style={{ color: col }}
                     />
                 ))}
             </Form>
@@ -42,12 +45,20 @@ export function ChangeColor(): React.JSX.Element {
                 data-testid="colored-box"
                 style={{
                     backgroundColor: color,
-                    color: "white",
-                    padding: "10px",
+                    // color:
+                    //     color === "yellow" || color === "beige" ?
+                    //         "black"
+                    //     :   "white",
+                    marginTop: "10px",
+                    color: color === "white" ? "black" : "white",
+                    padding: "5px",
                     textAlign: "center",
+                    display: "inline-block",
+                    fontWeight: "bold",
+                    borderRadius: "5px",
                 }}
             >
-                {color}
+                You have chosen {color}
             </div>
         </div>
     );
